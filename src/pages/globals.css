@@ -1,0 +1,571 @@
+/* Primary color */
+:root {
+  --PRIMARY-COLOR: #008755;
+  --PRIMARY-TEXT-COLOR: #000000;
+  --SECONDARY-TEXT-COLOR: #8D9093;
+  --TERTIARY-TEXT-COLOR: #FFFFFF;
+  --TEXTFIELD-LABEL: #58585B;
+}
+
+/* Scroll bar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--SECONDARY-TEXT-COLOR);
+  border-radius: 10px;
+}
+
+/* Font family */
+@font-face {
+  font-family: bukra;
+  src: url(fonts/29LTBukra-Regular.woff);
+}
+
+@font-face {
+  font-family: dubai-med;
+  src: url(fonts/Dubai-Medium.ttf);
+}
+
+.card-header>div>span,
+.bukra {
+  font-family: bukra !important;
+}
+
+.dubai-med,
+.dubai-med>span,
+.Text-field-customise,
+.Text-field-customise>div,
+.Text-field-customise>input,
+.Text-field-customise>div>input,
+.Text-field-customise>div>textarea,
+.Text-field-customise>div>p,
+.Text-field-customise>div>input::placeholder,
+.Text-field-customise>div>textarea::placeholder,
+.custom-datepicker>div>div>input,
+.custom-datepicker>div>div>input::placeholder {
+  font-family: dubai-med !important;
+  
+}
+
+.overview-subtitle {
+  font-size: 12px !important;
+}
+
+.table-header,
+.footer,
+.stepper-description-view,
+.export-button,
+.pdf-date {
+  font-size: 13px !important;
+}
+
+.side-menu-name,
+.stepper-number,
+.textfield-label {
+  font-size: 14px !important;
+}
+
+.overview-table-head,
+.view-sports-head,
+.goal-target-view-status,
+.view-card-list-para,
+.view-sports-list {
+  font-size: 15px !important;
+}
+
+.app-bar-menu-name,
+.app-bar-menu-role,
+.table-list-header,
+.table-count-header,
+.stepper-label,
+.stepper-label-active,
+.pdf-name,
+.stepper-label-view,
+.dialogBox-delete-title,
+.upload-text,
+.Text-field-customise,
+.Text-field-customise>input,
+.Text-field-customise>div>input,
+.Text-field-customise>div>textarea,
+.Text-field-customise>div>p,
+.Text-field-customise>div>input::placeholder,
+.Text-field-customise>div>textarea::placeholder,
+.custom-datepicker>div>div>input,
+.custom-datepicker>div>div>input::placeholder,
+.Text-field-customise>div>p,
+.goal-target-view-status-list,
+.table-content {
+  font-size: 16px !important;
+  
+}
+
+.overview-title,
+.view-table-list-head,
+.goal-target-view-list,
+.card-header>div>span,
+.view-table-list-data {
+  font-size: clamp(14px, 5vw, 18px) !important;
+}
+
+.dialogBox-title,
+.overview-table-list,
+.tournament-card-title,
+.goal-target-view-role {
+  font-size: clamp(14px, 5vw, 20px) !important;
+}
+
+.deleted-text {
+  font-size: clamp(16px, 5vw, 22px) !important;
+}
+
+.delete-dialog-name,
+.view-overview,
+.view-rank,
+.goal-target-view-name {
+  font-size: clamp(18px, 5vw, 24px) !important;
+}
+
+.goal-target-view-head {
+  font-size: clamp(24px, 5vw, 32px) !important;
+}
+
+.home-page-sub-header {
+  font-size: clamp(25px, 5vw, 35px) !important;
+}
+
+.view-name {
+  font-size: clamp(20px, 5vw, 40px) !important;
+}
+
+.home-page-header {
+  font-size: clamp(30px, 5vw, 42px) !important;
+}
+
+.stepper-label,
+.view-table-list-data,
+.stepper-label-active {
+  font-weight: 700 !important;
+}
+
+.table-list-header,
+.table-header,
+.textfield-label,
+.overview-title,
+.home-page-header,
+.tournament-card-title,
+.card-header>div>span,
+.dialogBox-title {
+  font-weight: 600 !important;
+}
+
+.stepper-description-view,
+.stepper-label-view,
+.app-bar-menu-name,
+.dialogBox-delete-title,
+.delete-dialog-name,
+.deleted-text,
+.upload-text,
+.Text-field-customise>input,
+.export-button,
+.Text-field-customise>div>p,
+.view-overview,
+.view-name,
+.overview-subtitle,
+.view-sports-head,
+.goal-target-view-head,
+.view-rank,
+.goal-target-view-name,
+.goal-target-view-role,
+.goal-target-view-status,
+.side-menu-name {
+  font-weight: 500 !important;
+}
+
+.app-bar-menu-role,
+.appbar-menu-list,
+.table-count-header,
+.stepper-number,
+.table-content,
+.pdf-name,
+.pdf-date,
+.format-text,
+.overview-table-list,
+.view-sports-list,
+.goal-target-view-list,
+.view-card-list-para,
+.goal-target-view-status-list,
+.view-table-list-head,
+.footer {
+  font-weight: 400 !important;
+}
+
+/* colors */
+.primary-color {
+  color: var(--PRIMARY-COLOR) !important;
+}
+
+.bg-dashboard {
+  color: #DFE9E6 !important;
+}
+
+.table-list-header,
+.primary-text-color,
+.stepper-label-active {
+  color: var(--PRIMARY-TEXT-COLOR) !important;
+}
+
+.goal-target-view-status-list,
+.goal-target-view-status,
+.goal-target-view-role,
+.tertiary-color,
+.add-season:hover>div>svg,
+.goal-target-view-head,
+.goal-target-view-list,
+.goal-target-view-name {
+  color: var(--TERTIARY-TEXT-COLOR) !important;
+}
+
+.textfield-label {
+  color: var(--TEXTFIELD-LABEL) !important;
+}
+
+.secondary-color,
+.table-count-header,
+.stepper-label,
+/* .Text-field-customise>div>p, */
+.stepper-number,
+.table-content {
+  color: var(--SECONDARY-TEXT-COLOR) !important;
+}
+
+.bg-primary {
+  background-color: var(--PRIMARY-COLOR) !important;
+}
+
+.bg-workspace {
+  background-color: #DFE9E6 !important;
+}
+
+.bg-white {
+  background-color: var(--TERTIARY-TEXT-COLOR);
+}
+
+.view-card-list-para {
+  color: #58585B;
+}
+
+.border-secondary {
+  border: 1px solid #58585B33;
+  border-radius: 8px;
+}
+
+/* other styling */
+.text-capitalize {
+  text-transform: capitalize !important;
+}
+
+.text-lowercase {
+  text-transform: lowercase !important;
+}
+
+.coach-dialog > div > form {
+  width: 100% !important;
+}
+
+.webkit-line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.custom-datepicker>p {
+  width: 94% !important;
+}
+
+.icon-path>svg path {
+  fill: var(--TERTIARY-TEXT-COLOR) !important;
+}
+
+.profile-menu>.MuiMenu-paper {
+  top: 50px !important;
+  left: 150px !important;
+}
+
+.upload-menu>.MuiMenu-paper {
+  width: 100px !important;
+}
+
+.header-border-right {
+  border-right: 1px solid #DEE2ED !important;
+  border-bottom: 1px solid #DEE2ED !important;
+}
+
+.table-container {
+  border: 1px solid #DEE2ED;
+  border-radius: 4px;
+}
+
+.avatarContainer {
+  position: relative !important;
+  display: flex !important;
+}
+
+.iconButton {
+  width: 30px !important;
+  height: 30px !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  background-color: #008755 !important;
+  color: white;
+}
+
+.cameraIcon {
+  width: 18px;
+  height: 16px;
+}
+
+.avatar {
+  width: 81px !important;
+  height: 81px !important;
+  opacity: 1;
+  border-radius: 40.5px 0 0 0;
+}
+
+.avatarContainer>label>svg {
+  fill: var(--TERTIARY-TEXT-COLOR);
+}
+
+.selectFieldContainer {
+  height: 40px !important;
+  border-radius: 4px 0px 0px 0px;
+}
+
+.selectFieldContainer .MuiOutlinedInput-root {
+  background-color: #00875508;
+}
+
+.selectFieldContainer .MuiOutlinedInput-root fieldset {
+  border-color: #40a377;
+}
+
+.selectFieldContainer .MuiOutlinedInput-root fieldset:hover fieldset {
+  border-color: #40a377;
+}
+
+.selectFieldContainer .MuiOutlinedInput-root fieldset .Mui-focused fieldset {
+  border-color: #40a377;
+}
+
+.selectFieldContainer .MuiSelect-select {
+  padding: 14px 16px;
+  color: #000000;
+  height: 20px !important;
+}
+
+.selectFieldContainer>div>div>div>p {
+  font-size: 14px !important;
+}
+
+.selectFieldContainer .MuiSelect-select::placeholder {
+  color: #8D9093;
+  opacity: 1;
+}
+
+.pb-2 {
+  padding-bottom: 16px !important;
+}
+
+.minWidth-0 {
+  min-width: 0 !important;
+  color: var(--SECONDARY-TEXT-COLOR) !important;
+  text-align: end !important;
+  padding: 0 !important;
+}
+
+.minWidth-0>span {
+  margin: 0px !important;
+}
+
+.dialog-width>div>div {
+  width: 507px !important;
+}
+
+.vertical-line>.Mui-disabled {
+  margin-left: 16.3% !important;
+  position: relative;
+}
+
+.vertical-line>.Mui-disabled>span {
+  position: absolute;
+  top: -32px;
+  height: 62px;
+}
+
+.goal-vertical-line>div>span {
+  align-items: start !important;
+}
+
+.goal-vertical-line>.Mui-disabled {
+  position: relative;
+}
+
+.goal-vertical-line>.Mui-disabled>span {
+  position: absolute;
+  top: -60px;
+  height: 64px;
+  left: -2px
+}
+
+.chart-liner-list>svg>g>g>g>path {
+  opacity: 30%;
+}
+
+.chart-liner-list>svg>g>line,
+.chart-liner-list>svg>g>g>line {
+  stroke: none !important;
+}
+
+.upload-outline>label {
+  border: 1px dashed var(--PRIMARY-COLOR) !important;
+  height: 158px;
+  display: grid;
+  align-content: center;
+  place-items: center;
+}
+
+.upload-outline>label>div>span {
+  font-family: dubai-med !important;
+  color: var(--SECONDARY-TEXT-COLOR) !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  margin: 24px 0px 8px 0px;
+}
+
+.upload-outline>label>div>span>span {
+  color: var(--PRIMARY-COLOR);
+}
+
+.upload-outline>label>div>span>span {
+  text-decoration: none !important;
+}
+
+.upload-outline>label>div>.file-types {
+  display: none !important;
+}
+
+.upload-outline>label>svg {
+  display: none !important;
+}
+
+.ctas {
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid var(--PRIMARY-COLOR);
+}
+
+.fc .fc-toolbar-title {
+  font-size: 20px !important;
+  color: #58585B;
+}
+
+.fc .fc-button {
+  color: #B5B5C3;
+  font-size: 16px;
+  background-color: transparent;
+  border: none;
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active,
+.fc .fc-button-primary:not(:disabled):active {
+  color: #000000;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.fc .fc-button-primary:hover {
+  color: #B5B5C3;
+  font-size: 16px;
+  background-color: transparent;
+}
+
+.kpi-chart-container>svg {
+  width: 100% !important;
+  height: auto;
+}
+
+.Text-field-customise {
+  padding-right: 0px !important;
+}
+
+.Text-field-customise>div>textarea {
+  height: 100px !important;
+}
+
+.card-height>div {
+  height: 100%;
+}
+
+.height-customise>div>textarea {
+  height: 60px !important;
+}
+
+.export-button {
+  background-color: rgba(0, 135, 85, 0.1) !important;
+}
+
+.save-continue-button {
+  height: 48px;
+  /* width: 146px; */
+  gap: 0px;
+  border-radius: 4px !important;
+  background-color: var(--PRIMARY-COLOR) !important;
+  box-shadow: none !important;
+}
+
+.save {
+  width: 70px !important;
+}
+
+.season-submenu {
+  min-width: 0px !important;
+}
+
+.linear-progress>span {
+  background-color: #F1EB9C !important;
+}
+
+.card-header>div {
+  margin-right: 8px !important;
+}
+
+.fc .fc-col-header-cell {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: center;
+  font-family: dubai-med !important;
+  background-color: #9BE3BF33;  
+}
+
+.fc .fc-daygrid-day-top {
+  display: flex; 
+  justify-content: center; 
+  font-weight: 500;
+  font-size: 16px;
+  align-items: center; 
+  height: 100%; 
+  font-family: dubai-med !important;
+}
+
+.today-cell {
+  position: relative;
+}

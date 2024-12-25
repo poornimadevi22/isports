@@ -1,0 +1,56 @@
+// DatePickerStyles.scss
+.custom-datepicker {
+  margin-bottom: "1.5rem";
+  height: "40px";
+  border-radius: 4px 0 0 0;
+  & .MuiOutlinedInput-root {
+    background-color: #00875508;
+
+    & fieldset {
+      border-color: #40a377; 
+    }
+
+    &:hover fieldset {
+      border-color: #40a377;
+    }
+
+    &.Mui-focused fieldset {
+      border-color: #40a377;
+    }
+  }
+  & input {
+    font-family: "Roboto"; 
+    padding-left: 10px;
+    color: #000000;
+    height: 8px;
+  }
+  & input::placeholder {
+    color: #8d9093;
+    opacity: 1;
+  }
+  & .Mui-error {
+    & fieldset {
+      border-color: red; 
+    }
+  }
+}
+
+.typography {
+  color: #000000;
+  font-family: "29LT Bukra";
+  line-height: 16.8px;
+  text-align: left;
+  position: relative;
+
+  .asterisk {
+    color: red;
+    width: 8px;
+    height: 8px;
+    top: 2px;
+    left: 83px;
+    padding: 0px 0.44px 0px 0.44px;
+    gap: 0px;
+    opacity: 1;
+    content: '*';
+  }
+}
