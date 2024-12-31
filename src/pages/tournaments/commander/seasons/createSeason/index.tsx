@@ -19,6 +19,7 @@ import SubMenuLayout from '../../layout';
 import BasicBreadcrumbs from '@/components/breadcrumbs';
 import CustomDatePicker from '@/components/Fields/CustomDatePicker';
 import ReactSelect from '@/components/Fields/ReactSelect';
+import { Block } from '@mui/icons-material';
 
 
 const breadcrumbRoutes = [
@@ -81,7 +82,6 @@ export default function CreateSeason() {
       date: undefined,
     }));
   };
-  
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -108,18 +108,16 @@ export default function CreateSeason() {
           <BasicBreadcrumbs routes={breadcrumbRoutes} />
         </Box>
       </Box>
-      <Box
-        bgcolor="white"
-        overflow="auto"
-        sx={{ borderBottom: '2px solid rgba(222, 226, 237, 1)', borderRadius: '8px 8px 0px 0px' }}
-      >
-        <Typography p={2} display={'inline-flex'} sx={{ fontFamily: '29LT Bukra', fontWeight: 600, borderRight: '3px solid rgba(222, 226, 237, 1)' }}>
+      <Box bgcolor="white" overflow="auto" display={'flex'}
+        sx={{ borderBottom: '1px solid rgba(222, 226, 237, 1)',
+            borderRadius: '8px 8px 0px 0px' }}>
+        <Typography className='typography textfield-label bukra' borderRight='1px solid #dee2ed'p={2}>
           Create Season Plan
         </Typography>
       </Box>
-      <Box bgcolor="white" height="780px" width="100%" overflow="scroll">
+      <Box bgcolor="white" height="71vh" width="100%" overflow="scroll">
         <form onSubmit={handleSubmit}>
-        <Grid container spacing={3} sx={{ justifyContent: "space-between", }} padding="1rem" pl="60px" pr="60px">
+          <Grid container spacing={3} sx={{ justifyContent: "space-between" }} p={5}>
             <Grid item xs={12} md={5.5} >
               <Typography className="typography textfield-label bukra">
                 Plan Name<span className="asterisk">*</span>
@@ -132,13 +130,11 @@ export default function CreateSeason() {
                 fullWidth
                 inputProps={{ maxLength: 50 }}
                 error={!!error.plan}
-              /><br />
+              />
               <Typography variant="caption" className="error-message">
                 {error.plan}
               </Typography>
             </Grid>
-
-
             <Grid item xs={12} md={5.5} >
               <Typography className="typography textfield-label bukra">
                 Select Sport<span className="asterisk">*</span>
@@ -149,16 +145,14 @@ export default function CreateSeason() {
                 className='select2'
                 classNamePrefix='select'
                 // handleChangeReactSelect={handleChangeSports}
-                 options="cricket"
+                Options={[]}
                 value={data.sport}
-                // isDisabled={!SportsOption}
                 placeholder="Select Sport"
               />
               <Typography variant="caption" className="error-message">
                 {error.sport}
               </Typography>
             </Grid>
-
             <Grid item xs={12} md={5.5}>
               <Typography className="typography textfield-label bukra">
                 Date<span className="asterisk">*</span>
@@ -170,8 +164,8 @@ export default function CreateSeason() {
                 label="Date"
                 boxmb={0.8}
                 required={true}
-                minDate={data.date || moment()}
-                maxDate={moment().add(10, 'years')}
+                // minDate={data.date || moment()}
+                // maxDate={moment().add(10, 'years')}
                 onChange={handleDateChange}
                 className="Text-field-customise"
               />
@@ -194,8 +188,8 @@ export default function CreateSeason() {
                   <FormControlLabel className="dubai-med textfield-label" value="Female" control={<Radio />} label="Female" />
                   <FormControlLabel className="dubai-med textfield-label" value="All" control={<Radio />} label="All" />
                 </RadioGroup>
-              </FormControl><br />
-              <Typography variant="caption" className="error-message">
+              </FormControl>
+              <Typography display="Block" variant="caption" className="error-message">
                 {error.type}
               </Typography>
             </Grid>
@@ -211,7 +205,7 @@ export default function CreateSeason() {
                 placeholder="Enter Location"
                 fullWidth
                 error={!!error.location}
-              /><br />
+              />
               <Typography variant="caption" className="error-message">
                 {error.location}
               </Typography>
@@ -223,7 +217,7 @@ export default function CreateSeason() {
               </Typography>
               <CustomTextField className='Text-field-customise'
                 name="desc"
-                placeholder="Enter Description about season plan  "
+                placeholder="Enter Description about season plan"
                 type="text"
                 variant="outlined"
                 multiline
@@ -240,38 +234,42 @@ export default function CreateSeason() {
                 }}
                 inputProps={{ maxLength: 500 }} />
             </Grid>
+            <Grid item xs={12} md={12} mt={15}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                }}>
+                <Button
+                  variant="outlined"
+                  color="error"
+                  sx={{
+                    mr: 2,
+                    color: "red",
+                    border: "1px solid red",
+                  }}
+                  onClick={() => router.back()}
+                  className="cancel-button text-capitalize"
+                >
+                  Back
+                </Button>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  className="save-continue-button text-capitalize"
+                > Save And New
+                </Button>
+                <Button sx={{ ml: 2, }}
+                  type="submit"
+                  variant="contained"
+                  className="save-continue-button text-capitalize"
+                > Save
+                </Button>
+              </Box>
+            </Grid>
           </Grid>
-          <Box mr={7.7} paddingTop="9%"
-            sx={{ display: 'flex', justifyContent: 'flex-end' }}
-          >
-            <Button variant="outlined" className="text-capitalize"
-              sx={{
-                marginRight: 1,
-                color: "red",
-                border: "1px solid red",
-              }}>
-              Back
-            </Button>
-            <Button className="text-capitalize"
-              sx={{
-                backgroundColor: "#008755",
-                color: " rgba(255,255,255,1)",
-                marginRight: 1, borderRadius: "5px"
-              }}
-            >Save and Add New
-            </Button>
-            <Button className="text-capitalize"
-              sx={{
-                backgroundColor: "rgba(0,135,85,1)",
-                color: "white",
-              }} type="submit"
-            > Save
-            </Button>
-          </Box>
-
         </form>
       </Box>
-
     </>
   );
 }

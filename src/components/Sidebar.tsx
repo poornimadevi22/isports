@@ -7,7 +7,9 @@ import {
   List,
   ListItem,
   ListItemIcon,
+  Popover, Grid,
   Typography,
+  Paper,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useRouter } from "next/navigation";
@@ -27,6 +29,8 @@ import { fetchRoles } from "@/redux/slices/settingSlice/roleSlice/roleSlice";
 import { getLocalStorage, removeLocalStorage } from "@/utils/helper";
 import { getSportsListAPI } from "@/redux/slices/sportsMenu/getSportsListSlice";
 import CustomCard from "./SubMenuOpen";
+import SimplePopover from "./AdditionalPopover";
+
 
 const drawerWidth = 105; // Width based on icon size
 
@@ -42,21 +46,28 @@ const Sidebar: React.FC = () => {
   const pathname = usePathname();
   const getSportID = getLocalStorage("sport");
   const [isDrawerOpen, setDrawerOpen] = useState<boolean>(true);
+  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null)
 
-  const handleMenu = (menu:any) =>{
-    if(menu.text !== 'Sports'){
-      router.push(menu.path)
+  const handleMenu = (menu: any, event: any) => {
+    if (menu.text === "Others") {
+      if (anchorEl === null) {
+        setAnchorEl(event?.currentTarget);
+      } else {
+        setAnchorEl(null);
+      }
+    } else if (menu.text === "Sports") {
+      dispatch(handleSubMenu(true));
+    } else {
+      router.push(menu.path);
     }
-    // router.push(`/teams/${getSportID}/staffs`)
-    if(menu.text === 'Sports'){
-  dispatch(handleSubMenu(true));
-}
-  }
-  useEffect(()=>{
-if(pathname !== `/teams/${getSportID}/staffs`){
-removeLocalStorage('staffSelectedFilters');
-}
-  },[pathname])
+  };
+
+  useEffect(() => {
+    if (pathname !== `/teams/${getSportID}/staffs`) {
+      removeLocalStorage('staffSelectedFilters');
+    }
+  }, [pathname])
+
 
   useEffect(() => {
     const param: any = {
@@ -86,8 +97,14 @@ removeLocalStorage('staffSelectedFilters');
     { text: "Programs", icon: Program, path: "/programs" },
     { text: "Rules & Agreements", icon: Rules, path: "/rules" },
     { text: "News", icon: News, path: "/news" },
-    { text: "Others", icon: Menu, path: "/others" },
+    { text: "Others", icon: Menu, path: "" },
   ];
+  const open = Boolean(anchorEl)
+  const id = undefined;
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   const toggleDrawer = (): void => {
     setDrawerOpen((prev) => !prev);
@@ -95,129 +112,133 @@ removeLocalStorage('staffSelectedFilters');
 
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <CustomCard path={'staffs'} customSelect={"Staffs"} />
-      <Drawer
-        variant="permanent"
-        anchor="left"
-        open={isDrawerOpen}
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          "& .MuiDrawer-paper": {
+    <>
+      <Box sx={{ display: "flex" }}>
+        <CustomCard path={'staffs'} customSelect={"Staffs"} />
+        <Drawer
+          variant="permanent"
+          anchor="left"
+          open={isDrawerOpen}
+          sx={{
             width: drawerWidth,
-            boxSizing: "border-box",
-            bgcolor: "background.default",
-            transition: "width 0.3s",
-          },
-        }}
-      >
-        <List sx={{ py: 0 }}>
-          <ListItem
-            // button
-            onClick={toggleDrawer}
-            sx={{ justifyContent: "center", flexDirection: "column" }}
-          >
-            <ListItemIcon
-              sx={{
-                minWidth: "unset",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                width: "40px",
-                height: "40px",
-                borderRadius: "50%",
-                color: "#008B30",
-                background: "#EDFFFC",
-                border: "1px solid #EEEEEE",
-                marginBottom: "15px",
-                "&:hover": {
-                  background: "#21865B",
-                  color: "#fff",
-                },
-              }}
-            >
-              <MenuIcon />
-            </ListItemIcon>
-          </ListItem>
-          {menuItems.map((item, index) => (
+            flexShrink: 0,
+            "& .MuiDrawer-paper": {
+              width: drawerWidth,
+              boxSizing: "border-box",
+              bgcolor: "background.default",
+              transition: "width 0.3s",
+            },
+          }}
+        >
+          <List sx={{ py: 0 }}>
             <ListItem
-              key={index}
-              onClick={()=>handleMenu(item)}
-              // onClick={() => router.push(item.path)}
-              sx={{
-                justifyContent: "center",
-                flexDirection: "column",
-                cursor: "pointer",
-                px: 0.5,
-                borderTop: item.text==="Others" ? "1px solid #D1D1D1" : '0'
-              }}
-              component="div" // Specify the component prop here
+              // button
+              onClick={toggleDrawer}
+              sx={{ justifyContent: "center", flexDirection: "column" }}
             >
               <ListItemIcon
-                className={
-                  pathname === item?.path
-                    ? "icon-path"
-                    : item?.path?.includes("/teams") &&
-                      pathname?.includes("/teams")
-                    ? "icon-path"
-                    : ""
-                }
                 sx={{
                   minWidth: "unset",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  width: "46px",
-                  height: "46px",
-                  borderRadius: "4px",
-                  mt: item.text==="Others" ? 1 : 0,
-                  color:
-                    pathname === item?.path
+                  width: "40px",
+                  height: "40px",
+                  borderRadius: "50%",
+                  color: "#008B30",
+                  background: "#EDFFFC",
+                  border: "1px solid #EEEEEE",
+                  marginBottom: "15px",
+                  "&:hover": {
+                    background: "#21865B",
+                    color: "#fff",
+                  },
+                }}
+              >
+                <MenuIcon />
+              </ListItemIcon>
+            </ListItem>
+            {menuItems.map((item: any, index) => (
+              <ListItem
+                key={index} aria-describedby={item.text === 'Others' ? id : undefined}
+                onClick={(event)=> handleMenu(item,event)}
+                // onClick={() => router.push(item.path)}
+                sx={{
+                  justifyContent: "center",
+                  flexDirection: "column",
+                  cursor: "pointer",
+                  px: 0.5,
+                  borderTop: item.text === "Others" ? "1px solid #D1D1D1" : "0"
+                }}
+                component="div"
+              >
+                <ListItemIcon
+                  className={pathname === item?.path
+                    ? "icon-path"
+                    : item?.path?.includes("/teams") &&
+                      pathname?.includes("/teams")
+                      ? "icon-path"
+                      : ""}
+                  sx={{
+                    minWidth: "unset",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "46px",
+                    height: "46px",
+                    borderRadius: "4px",
+                    mt: item.text === "Others" ? 1 : 0,
+                    color: pathname === item?.path
                       ? "#fff"
                       : item?.path.includes("/teams") &&
                         pathname?.includes("/teams")
-                      ? "#fff"
-                      : "#008755",
-                  background:
-                    pathname === item?.path
+                        ? "#fff"
+                        : "#008755",
+                    background: pathname === item?.path
                       ? "#008755"
                       : item?.path.includes("/teams") &&
                         pathname?.includes("/teams")
-                      ? "#008755"
-                      : "#EDFFFC",
-                  border:
-                    pathname === item?.path
+                        ? "#008755"
+                        : "#EDFFFC",
+                    border: pathname === item?.path
                       ? "1px solid #21865B"
                       : item?.path?.includes("/teams") &&
                         pathname?.includes("/teams")
-                      ? "1px solid #21865B"
-                      : "1px solid #fff",
-                  "&:hover": {
-                    borderColor: "#008755",
-                  },
-                }}
-              >
-                <item.icon width={22} height={22} />
-              </ListItemIcon>
-              <Typography
-                sx={{
-                  mt: 1,
-                  color: pathname === item.path ? "#008755" : "#58585B",
-                  textAlign: "center",
-                  "&:hover": {
-                    color: "#008755",
-                  },
-                }}
-                className="side-menu-name dubai-med"
-              >
-                {item.text}
-              </Typography>
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
-    </Box>
+                        ? "1px solid #21865B"
+                        : "1px solid #fff",
+                    "&:hover": {
+                      borderColor: "#008755",
+                    },
+                  }}
+                >
+                  <item.icon width={22} height={22} />
+                </ListItemIcon>
+                <Typography
+                  sx={{
+                    mt: 1,
+                    color: pathname === item.path ? "#008755" : "#58585B",
+                    textAlign: "center",
+                    "&:hover": {
+                      color: "#008755",
+                    },
+                  }}
+                  className="side-menu-name dubai-med"
+                >
+                  {item.text}
+                </Typography>
+                <SimplePopover 
+                  id={id}
+                  open={open}
+                  anchorEl={anchorEl}
+                  setAnchorEl={setAnchorEl}
+                  onClose={handleClose}
+                />
+              </ListItem>
+            ))}
+          </List>
+        </Drawer>
+      </Box>
+    </>
   );
 };
 
